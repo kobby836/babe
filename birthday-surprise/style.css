@@ -1,0 +1,1723 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+
+    background: #08060d;
+
+    color: white;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+button {
+    border: none;
+
+    padding: 14px 26px;
+
+    border-radius: 30px;
+
+    background: #ffffff;
+
+    color: #35152f;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.screen {
+    width: 100%;
+
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   OPENING
+===================================================== */
+
+.opening {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #40182f,
+            #08060d 70%
+        );
+}
+
+
+.opening-content {
+
+    max-width: 500px;
+
+    animation: fadeUp 1.3s ease;
+}
+
+
+.sparkle {
+
+    font-size: 55px;
+
+    margin-bottom: 20px;
+
+    animation: float 2s infinite ease-in-out;
+}
+
+
+.tiny-text {
+
+    opacity: 0.6;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+}
+
+
+.opening h1 {
+
+    font-size: clamp(48px, 12vw, 75px);
+
+    margin: 12px 0 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffb6d9
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.opening-content > p:not(.tiny-text) {
+
+    opacity: 0.7;
+
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   ENVELOPE
+===================================================== */
+
+.envelope-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+.envelope-area {
+
+    width: 100%;
+
+    max-width: 500px;
+}
+
+
+.instruction {
+
+    margin-bottom: 35px;
+
+    opacity: 0.7;
+}
+
+
+.envelope {
+
+    position: relative;
+
+    width: 300px;
+    height: 190px;
+
+    margin: 0 auto 45px;
+
+    perspective: 1000px;
+}
+
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #9b3e63;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.45);
+}
+
+
+.letter-paper {
+
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+
+    top: 15px;
+
+    height: 155px;
+
+    background: #fff7fa;
+
+    color: #6c3150;
+
+    border-radius: 5px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 45px;
+
+    z-index: 2;
+
+    transition:
+        transform 1s ease;
+}
+
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+
+    border-top: 100px solid #c65a82;
+
+    transform-origin: top;
+
+    z-index: 4;
+
+    transition:
+        transform 0.8s ease;
+}
+
+
+.envelope-front {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+
+    border-bottom: 100px solid #a94369;
+
+    z-index: 3;
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+.letter-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 45px 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #3b1730,
+            #08060d 70%
+        );
+}
+
+
+.letter-card {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    background:
+        rgba(255, 248, 251, 0.98);
+
+    color: #482034;
+
+    border-radius: 20px;
+
+    padding: 40px 30px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.55);
+
+    animation: fadeUp 1s ease;
+}
+
+
+.letter-top {
+
+    text-align: center;
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+
+.letter-card h2 {
+
+    text-align: center;
+
+    color: #8c3158;
+
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+
+.letter-text {
+
+    font-size: 16px;
+
+    line-height: 1.85;
+}
+
+
+.letter-text p {
+
+    margin-bottom: 20px;
+}
+
+
+.signature {
+
+    margin-top: 30px;
+
+    text-align: right;
+}
+
+
+.letter-card button {
+
+    display: block;
+
+    margin: 30px auto 0;
+
+    background: #8c3158;
+
+    color: white;
+}
+
+
+/* =====================================================
+   MEMORY INTRO
+===================================================== */
+
+.memory-intro {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+.memory-intro > div {
+
+    max-width: 550px;
+}
+
+
+.big-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 25px;
+}
+
+
+.memory-intro h2 {
+
+    font-size: 35px;
+
+    margin-bottom: 18px;
+}
+
+
+.memory-intro p {
+
+    opacity: 0.7;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   MEMORIES
+===================================================== */
+
+.photo-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+.photo-container {
+
+    width: 100%;
+
+    max-width: 600px;
+}
+
+
+.memory-number {
+
+    opacity: 0.55;
+
+    margin-bottom: 20px;
+}
+
+
+.memory-photo {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.5);
+}
+
+
+.memory-photo img {
+
+    width: 100%;
+
+    display: block;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: contain;
+
+    transition:
+        opacity 0.5s ease;
+}
+
+
+.photo-container h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 12px;
+}
+
+
+.photo-container > p:not(.memory-number) {
+
+    opacity: 0.7;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   WHY YOU
+===================================================== */
+
+.love-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #3a172f,
+            #08060d 75%
+        );
+}
+
+
+.love-container {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    text-align: center;
+}
+
+
+.love-container h2 {
+
+    font-size: 43px;
+
+    margin: 12px 0 15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffb6d9
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.love-intro {
+
+    opacity: 0.7;
+
+    margin-bottom: 30px;
+}
+
+
+.love-card {
+
+    text-align: left;
+
+    padding: 25px;
+
+    margin-bottom: 18px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(10px);
+}
+
+
+.love-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+
+.love-card h3 {
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+
+.love-card p {
+
+    line-height: 1.7;
+
+    opacity: 0.7;
+}
+
+
+#lastThingButton {
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   FINAL INTRO
+===================================================== */
+
+.final-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #26132f,
+            #050308 75%
+        );
+}
+
+
+.final-content {
+
+    max-width: 550px;
+
+    animation: fadeUp 1s ease;
+}
+
+
+.final-content h2 {
+
+    font-size: 40px;
+
+    margin: 20px 0 25px;
+
+    line-height: 1.2;
+}
+
+
+.final-content p:not(.tiny-text) {
+
+    opacity: 0.7;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   WHEEL
+===================================================== */
+
+.wheel-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+.wheel-container {
+
+    width: 100%;
+
+    max-width: 600px;
+}
+
+
+.wheel-small {
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+
+    margin-bottom: 12px;
+}
+
+
+.wheel-container h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+
+.wheel-wrapper {
+
+    position: relative;
+
+    width: min(82vw, 330px);
+
+    height: min(82vw, 330px);
+
+    margin: 0 auto 35px;
+}
+
+
+.wheel {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    border: 8px solid white;
+
+    background:
+        conic-gradient(
+            #ff5c8a 0deg 36deg,
+            #ffca5c 36deg 72deg,
+            #67d8a5 72deg 108deg,
+            #5cbcff 108deg 144deg,
+            #a879ff 144deg 180deg,
+            #ff7b54 180deg 216deg,
+            #ff5c8a 216deg 252deg,
+            #ffca5c 252deg 288deg,
+            #67d8a5 288deg 324deg,
+            #5cbcff 324deg 360deg
+        );
+
+    box-shadow:
+        0 0 40px rgba(255,100,180,0.35);
+
+    transition:
+        transform 5s cubic-bezier(
+            0.17,
+            0.67,
+            0.12,
+            0.99
+        );
+}
+
+
+.wheel-center {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 27px;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.3);
+}
+
+
+.pointer {
+
+    position: absolute;
+
+    top: -20px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10;
+
+    font-size: 36px;
+
+    color: white;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,0.5);
+}
+
+
+/* =====================================================
+   PERFECT WHEEL LABEL ALIGNMENT
+===================================================== */
+
+.wheel-label {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    z-index: 3;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 25px;
+
+    transform-origin: center;
+
+    pointer-events: none;
+}
+
+
+/* Each emoji sits in the CENTER of its slice */
+
+.label1 {
+    transform:
+        translate(-50%, -50%)
+        rotate(18deg)
+        translateY(-112px)
+        rotate(-18deg);
+}
+
+.label2 {
+    transform:
+        translate(-50%, -50%)
+        rotate(54deg)
+        translateY(-112px)
+        rotate(-54deg);
+}
+
+.label3 {
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg)
+        translateY(-112px)
+        rotate(-90deg);
+}
+
+.label4 {
+    transform:
+        translate(-50%, -50%)
+        rotate(126deg)
+        translateY(-112px)
+        rotate(-126deg);
+}
+
+.label5 {
+    transform:
+        translate(-50%, -50%)
+        rotate(162deg)
+        translateY(-112px)
+        rotate(-162deg);
+}
+
+.label6 {
+    transform:
+        translate(-50%, -50%)
+        rotate(198deg)
+        translateY(-112px)
+        rotate(-198deg);
+}
+
+.label7 {
+    transform:
+        translate(-50%, -50%)
+        rotate(234deg)
+        translateY(-112px)
+        rotate(-234deg);
+}
+
+.label8 {
+    transform:
+        translate(-50%, -50%)
+        rotate(270deg)
+        translateY(-112px)
+        rotate(-270deg);
+}
+
+.label9 {
+    transform:
+        translate(-50%, -50%)
+        rotate(306deg)
+        translateY(-112px)
+        rotate(-306deg);
+}
+
+.label10 {
+    transform:
+        translate(-50%, -50%)
+        rotate(342deg)
+        translateY(-112px)
+        rotate(-342deg);
+}/* =====================================================
+   PERFECT WHEEL LABEL ALIGNMENT
+===================================================== */
+
+/* =====================================================
+   WHEEL
+===================================================== */
+
+.wheel-screen {
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+/* Main wheel content */
+
+.wheel-container {
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* Title */
+
+.wheel-small {
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+
+    margin-bottom: 12px;
+}
+
+
+.wheel-container h2 {
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   WHEEL WRAPPER
+===================================================== */
+
+.wheel-wrapper {
+    position: relative;
+
+    width: 360px;
+    height: 360px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 35px;
+}
+
+
+/* =====================================================
+   ACTUAL WHEEL
+===================================================== */
+
+.wheel {
+    position: relative;
+
+    width: 360px;
+    height: 360px;
+
+    border-radius: 50%;
+
+    border: 8px solid white;
+
+    background:
+        conic-gradient(
+            #ff5c8a 0deg 36deg,
+            #ffca5c 36deg 72deg,
+            #67d8a5 72deg 108deg,
+            #5cbcff 108deg 144deg,
+            #a879ff 144deg 180deg,
+            #ff7b54 180deg 216deg,
+            #ff5c8a 216deg 252deg,
+            #ffca5c 252deg 288deg,
+            #67d8a5 288deg 324deg,
+            #5cbcff 324deg 360deg
+        );
+
+    box-shadow:
+        0 0 40px rgba(255, 100, 180, 0.35);
+
+    transition:
+        transform 5s cubic-bezier(
+            0.17,
+            0.67,
+            0.12,
+            0.99
+        );
+}
+
+
+/* =====================================================
+   POINTER
+===================================================== */
+
+.pointer {
+    position: absolute;
+
+    top: -20px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 20;
+
+    width: 0;
+    height: 0;
+
+    font-size: 0;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 0;
+    border-bottom: 32px solid white;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(0,0,0,0.5)
+        );
+}
+
+
+
+
+/* =====================================================
+   CENTER BUTTON
+===================================================== */
+
+.wheel-center {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 27px;
+
+    z-index: 10;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.3);
+}
+
+
+/* =====================================================
+   SPIN BUTTON
+===================================================== */
+
+#wheelScreen #spinButton {
+    min-width: 150px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    padding: 15px 30px;
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.wheel-result {
+    min-height: 30px;
+
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #ffafd5;
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .wheel-wrapper {
+        width: 92vw;
+        height: 92vw;
+    }
+
+    .wheel-container h2 {
+        font-size: 25px;
+    }
+
+    .wheel-label {
+        font-size: 21px;
+    }
+
+    .wheel-center {
+        width: 60px;
+        height: 60px;
+    }
+
+    .pointer {
+        top: -18px;
+
+        border-left-width: 17px;
+        border-right-width: 17px;
+
+        border-bottom-width: 28px;
+    }
+
+}
+
+/* =====================================================
+   CONGRATULATIONS
+===================================================== */
+
+.congratulations-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #4a163b,
+            #08060d 70%
+        );
+}
+
+
+.congratulations-content {
+
+    max-width: 550px;
+
+    animation:
+        birthdayAppear 1.2s ease;
+}
+
+
+.celebration {
+
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+    animation:
+        pulse 1.5s infinite;
+}
+
+
+.congratulations-content h1 {
+
+    font-size: clamp(35px, 8vw, 50px);
+
+    margin-bottom: 10px;
+}
+
+
+.congratulations-content h2 {
+
+    font-size: 35px;
+
+    color: #ffafd5;
+
+    margin-bottom: 25px;
+}
+
+
+.congratulations-content p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.8;
+
+    margin-bottom: 8px;
+}
+
+
+.congratulations-content button {
+
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   FINAL MESSAGE
+===================================================== */
+
+.final-message-screen {
+
+    display: none;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 50px 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+.final-letter {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    padding: 45px 30px;
+
+    background:
+        rgba(255,248,251,0.98);
+
+    color: #4a2137;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.55);
+
+    animation:
+        birthdayAppear 1.2s ease;
+}
+
+
+.final-heart {
+
+    font-size: 48px;
+
+    margin-bottom: 15px;
+}
+
+
+.final-letter h1 {
+
+    color: #7c3155;
+
+    font-size: 32px;
+
+    margin: 15px 0 30px;
+}
+
+
+.final-letter-content {
+
+    text-align: left;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+.final-letter-content p {
+
+    margin-bottom: 20px;
+}
+
+
+.final-letter h2 {
+
+    color: #7c3155;
+
+    font-size: 25px;
+
+    margin-top: 30px;
+}
+
+
+.final-hearts {
+
+    margin-top: 25px;
+
+    font-size: 25px;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes float {
+
+    0%, 100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.08);
+    }
+}
+
+
+@keyframes birthdayAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.75);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .letter-card {
+
+        padding: 30px 22px;
+    }
+
+
+    .letter-text {
+
+        font-size: 15px;
+
+        line-height: 1.8;
+    }
+
+
+    .love-container h2 {
+
+        font-size: 36px;
+    }
+
+
+    .love-card {
+
+        padding: 21px;
+    }
+
+
+    .final-content h2 {
+
+        font-size: 32px;
+    }
+
+
+    .wheel-container h2 {
+
+        font-size: 25px;
+    }
+
+
+    .wheel-label {
+
+        font-size: 20px;
+    }
+
+
+    .final-letter {
+
+        padding: 35px 22px;
+    }
+
+}
+.video-screen {
+    display: flex;
+
+    min-height: 100vh;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: #08060d;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.video-container h2 {
+    font-size: 32px;
+    margin: 15px 0 25px;
+}
+
+.video-box {
+    width: 100%;
+
+    background: #000;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.5);
+}
+
+.video-box video {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 70vh;
+
+    background: #000;
+}
+
+.video-caption {
+    opacity: 0.7;
+
+    margin: 20px 0 25px;
+}
+/* =====================================================
+   10 WHEEL ITEMS
+===================================================== */
+
+.wheel-label {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    transform-origin: center center;
+}
+
+
+/* 10 positions around the wheel */
+
+.label1 {
+    transform: translate(-50%, -50%) translateY(-135px);
+}
+
+.label2 {
+    transform: translate(-50%, -50%)
+               rotate(36deg)
+               translateY(-135px)
+               rotate(-36deg);
+}
+
+.label3 {
+    transform: translate(-50%, -50%)
+               rotate(72deg)
+               translateY(-135px)
+               rotate(-72deg);
+}
+
+.label4 {
+    transform: translate(-50%, -50%)
+               rotate(108deg)
+               translateY(-135px)
+               rotate(-108deg);
+}
+
+.label5 {
+    transform: translate(-50%, -50%)
+               rotate(144deg)
+               translateY(-135px)
+               rotate(-144deg);
+}
+
+.label6 {
+    transform: translate(-50%, -50%)
+               rotate(180deg)
+               translateY(-135px)
+               rotate(-180deg);
+}
+
+.label7 {
+    transform: translate(-50%, -50%)
+               rotate(216deg)
+               translateY(-135px)
+               rotate(-216deg);
+}
+
+.label8 {
+    transform: translate(-50%, -50%)
+               rotate(252deg)
+               translateY(-135px)
+               rotate(-252deg);
+}
+
+.label9 {
+    transform: translate(-50%, -50%)
+               rotate(288deg)
+               translateY(-135px)
+               rotate(-288deg);
+}
+
+.label10 {
+    transform: translate(-50%, -50%)
+               rotate(324deg)
+               translateY(-135px)
+               rotate(-324deg);
+}
+
+
+/* =====================================================
+   CENTER 🎉
+===================================================== */
+
+.wheel-center {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 27px;
+
+    z-index: 10;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.3);
+}
