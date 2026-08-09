@@ -1723,16 +1723,23 @@ button:disabled {
 }
 @media (max-width: 420px) {
 
-    .wheel-wrapper {
-        width: 88vw;
-        height: 88vw;
+.wheel-wrapper {
+    width: 88vw;
+    height: 88vw;
     }
 
-    .wheel {
-        width: 88vw;
-        height: 88vw;
+.wheel {
+    width: 88vw;
+    height: 88vw;
 
-        min-width: 0;
-        min-height: 0;
+    min-width: 0;
+    min-height: 0;
     }
+}
+.envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.opened .letter-paper {
+    transform: translateY(-110px);
 }
