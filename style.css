@@ -701,270 +701,7 @@ button:disabled {
     margin-bottom: 35px;
 }
 
-
 /* =====================================================
-   WHEEL
-===================================================== */
-
-.wheel-screen {
-
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 35px 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #35152f,
-            #08060d 75%
-        );
-}
-
-
-.wheel-container {
-
-    width: 100%;
-
-    max-width: 600px;
-}
-
-
-.wheel-small {
-
-    font-size: 13px;
-
-    letter-spacing: 2px;
-
-    opacity: 0.6;
-
-    margin-bottom: 12px;
-}
-
-
-.wheel-container h2 {
-
-    font-size: 30px;
-
-    margin-bottom: 30px;
-}
-
-
-.wheel-wrapper {
-
-    position: relative;
-
-    width: min(82vw, 330px);
-
-    height: min(82vw, 330px);
-
-    margin: 0 auto 35px;
-}
-
-
-.wheel {
-
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    border-radius: 50%;
-
-    border: 8px solid white;
-
-    background:
-        conic-gradient(
-            #ff5c8a 0deg 36deg,
-            #ffca5c 36deg 72deg,
-            #67d8a5 72deg 108deg,
-            #5cbcff 108deg 144deg,
-            #a879ff 144deg 180deg,
-            #ff7b54 180deg 216deg,
-            #ff5c8a 216deg 252deg,
-            #ffca5c 252deg 288deg,
-            #67d8a5 288deg 324deg,
-            #5cbcff 324deg 360deg
-        );
-
-    box-shadow:
-        0 0 40px rgba(255,100,180,0.35);
-
-    transition:
-        transform 5s cubic-bezier(
-            0.17,
-            0.67,
-            0.12,
-            0.99
-        );
-}
-
-
-.wheel-center {
-
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    width: 65px;
-    height: 65px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-
-    font-size: 27px;
-
-    z-index: 5;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.3);
-}
-
-
-.pointer {
-
-    position: absolute;
-
-    top: -20px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 10;
-
-    font-size: 36px;
-
-    color: white;
-
-    text-shadow:
-        0 3px 10px rgba(0,0,0,0.5);
-}
-
-
-/* =====================================================
-   PERFECT WHEEL LABEL ALIGNMENT
-===================================================== */
-
-.wheel-label {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    z-index: 3;
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 25px;
-
-    transform-origin: center;
-
-    pointer-events: none;
-}
-
-
-/* Each emoji sits in the CENTER of its slice */
-
-.label1 {
-    transform:
-        translate(-50%, -50%)
-        rotate(18deg)
-        translateY(-112px)
-        rotate(-18deg);
-}
-
-.label2 {
-    transform:
-        translate(-50%, -50%)
-        rotate(54deg)
-        translateY(-112px)
-        rotate(-54deg);
-}
-
-.label3 {
-    transform:
-        translate(-50%, -50%)
-        rotate(90deg)
-        translateY(-112px)
-        rotate(-90deg);
-}
-
-.label4 {
-    transform:
-        translate(-50%, -50%)
-        rotate(126deg)
-        translateY(-112px)
-        rotate(-126deg);
-}
-
-.label5 {
-    transform:
-        translate(-50%, -50%)
-        rotate(162deg)
-        translateY(-112px)
-        rotate(-162deg);
-}
-
-.label6 {
-    transform:
-        translate(-50%, -50%)
-        rotate(198deg)
-        translateY(-112px)
-        rotate(-198deg);
-}
-
-.label7 {
-    transform:
-        translate(-50%, -50%)
-        rotate(234deg)
-        translateY(-112px)
-        rotate(-234deg);
-}
-
-.label8 {
-    transform:
-        translate(-50%, -50%)
-        rotate(270deg)
-        translateY(-112px)
-        rotate(-270deg);
-}
-
-.label9 {
-    transform:
-        translate(-50%, -50%)
-        rotate(306deg)
-        translateY(-112px)
-        rotate(-306deg);
-}
-
-.label10 {
-    transform:
-        translate(-50%, -50%)
-        rotate(342deg)
-        translateY(-112px)
-        rotate(-342deg);
-}/* =====================================================
    PERFECT WHEEL LABEL ALIGNMENT
 ===================================================== */
 
@@ -1087,6 +824,137 @@ button:disabled {
 
 
 /* =====================================================
+   WHEEL
+===================================================== */
+
+.wheel-screen {
+    display: none;
+
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    text-align: center;
+
+    padding: 35px 15px 50px;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #35152f,
+            #08060d 75%
+        );
+}
+
+
+.wheel-container {
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    box-sizing: border-box;
+}
+
+
+.wheel-small {
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+
+    margin-bottom: 12px;
+}
+
+
+.wheel-container h2 {
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   PERFECT CIRCLE
+===================================================== */
+
+.wheel-wrapper {
+    position: relative;
+
+    width: min(88vw, 360px);
+    height: min(88vw, 360px);
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto 35px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   ACTUAL WHEEL
+===================================================== */
+
+.wheel {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    box-sizing: border-box;
+
+    border-radius: 50%;
+
+    border: 8px solid white;
+
+    background:
+        conic-gradient(
+            #ff5c8a 0deg 36deg,
+            #ffca5c 36deg 72deg,
+            #67d8a5 72deg 108deg,
+            #5cbcff 108deg 144deg,
+            #a879ff 144deg 180deg,
+            #ff7b54 180deg 216deg,
+            #ff5c8a 216deg 252deg,
+            #ffca5c 252deg 288deg,
+            #67d8a5 288deg 324deg,
+            #5cbcff 324deg 360deg
+        );
+
+    box-shadow:
+        0 0 40px rgba(255,100,180,0.35);
+
+    transition:
+        transform 5s cubic-bezier(
+            0.17,
+            0.67,
+            0.12,
+            0.99
+        );
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
    POINTER
 ===================================================== */
 
@@ -1096,15 +964,12 @@ button:disabled {
     top: -20px;
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     z-index: 20;
 
     width: 0;
     height: 0;
-
-    font-size: 0;
 
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
@@ -1119,10 +984,119 @@ button:disabled {
 }
 
 
+/* =====================================================
+   WHEEL ITEMS
+===================================================== */
+
+.wheel-label {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    transform-origin: center center;
+}
+
+
+/* 10 items = 36 degrees apart */
+
+.label1 {
+    transform:
+        translate(-50%, -50%)
+        rotate(18deg)
+        translateY(-120px)
+        rotate(0deg);
+}
+
+.label2 {
+    transform:
+        translate(-50%, -50%)
+        rotate(54deg)
+        translateY(-120px)
+        rotate(-36deg);
+}
+
+.label3 {
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg)
+        translateY(-120px)
+        rotate(-72deg);
+}
+
+.label4 {
+    transform:
+        translate(-50%, -50%)
+        rotate(126deg)
+        translateY(-120px)
+        rotate(-108deg);
+}
+
+.label5 {
+    transform:
+        translate(-50%, -50%)
+        rotate(162deg)
+        translateY(-120px)
+        rotate(-144deg);
+}
+
+.label6 {
+    transform:
+        translate(-50%, -50%)
+        rotate(198deg)
+        translateY(-120px)
+        rotate(-180deg);
+}
+
+.label7 {
+    transform:
+        translate(-50%, -50%)
+        rotate(234deg)
+        translateY(-120px)
+        rotate(-216deg);
+}
+
+.label8 {
+    transform:
+        translate(-50%, -50%)
+        rotate(270deg)
+        translateY(-120px)
+        rotate(-252deg);
+}
+
+.label9 {
+    transform:
+        translate(-50%, -50%)
+        rotate(306deg)
+        translateY(-120px)
+        rotate(-288deg);
+}
+
+.label10 {
+    transform:
+        translate(-50%, -50%)
+        rotate(342deg)
+        translateY(-120px)
+        rotate(-324deg);
+}
 
 
 /* =====================================================
-   CENTER BUTTON
+   CENTER
 ===================================================== */
 
 .wheel-center {
@@ -1131,8 +1105,7 @@ button:disabled {
     top: 50%;
     left: 50%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     width: 65px;
     height: 65px;
@@ -1188,18 +1161,34 @@ button:disabled {
 
 
 /* =====================================================
-   SMALL PHONES
+   PHONE
 ===================================================== */
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
 
-    .wheel-wrapper {
-        width: 92vw;
-        height: 92vw;
+    .wheel-screen {
+        padding:
+            30px 10px 50px;
+
+        overflow-x: hidden;
+    }
+
+    .wheel-container {
+        width: 100%;
     }
 
     .wheel-container h2 {
         font-size: 25px;
+
+        margin-bottom: 25px;
+    }
+
+    .wheel-wrapper {
+        width: 88vw;
+        height: 88vw;
+
+        max-width: 360px;
+        max-height: 360px;
     }
 
     .wheel-label {
@@ -1209,6 +1198,8 @@ button:disabled {
     .wheel-center {
         width: 60px;
         height: 60px;
+
+        font-size: 24px;
     }
 
     .pointer {
@@ -1219,9 +1210,27 @@ button:disabled {
 
         border-bottom-width: 28px;
     }
-
 }
 
+
+@media (max-width: 380px) {
+
+    .wheel-wrapper {
+        width: 84vw;
+        height: 84vw;
+    }
+
+    .wheel-label {
+        font-size: 19px;
+    }
+
+    .wheel-center {
+        width: 55px;
+        height: 55px;
+
+        font-size: 22px;
+    }
+}
 /* =====================================================
    CONGRATULATIONS
 ===================================================== */
@@ -1594,152 +1603,133 @@ button:disabled {
     margin: 20px 0 25px;
 }
 /* =====================================================
-   10 WHEEL ITEMS
+   FINAL WHEEL POSITION FIX
 ===================================================== */
 
-.wheel-label {
+#wheelScreen .wheel-wrapper {
+    position: relative !important;
+
+    width: min(88vw, 360px) !important;
+    height: min(88vw, 360px) !important;
+
+    display: block !important;
+
+    margin: 0 auto 35px !important;
+
+    flex-shrink: 0 !important;
+}
+
+#wheelScreen .wheel {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    border-radius: 50% !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* POINTER */
+
+#wheelScreen .pointer {
     position: absolute !important;
 
-    top: 50% !important;
+    top: -32px !important;
     left: 50% !important;
 
-    width: 40px;
-    height: 40px;
+    transform: translateX(-50%) !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 0 !important;
+    height: 0 !important;
 
-    font-size: 25px;
+    font-size: 0 !important;
 
-    z-index: 3;
+    border-left: 20px solid transparent !important;
+    border-right: 20px solid transparent !important;
 
-    pointer-events: none;
+    /* POINT DOWN */
+    border-top: 32px solid white !important;
+    border-bottom: 0 !important;
 
-    transform-origin: center center;
-}
+    z-index: 100 !important;
 
-
-/* 10 positions around the wheel */
-
-.label1 {
-    transform: translate(-50%, -50%) translateY(-135px);
-}
-
-.label2 {
-    transform: translate(-50%, -50%)
-               rotate(36deg)
-               translateY(-135px)
-               rotate(-36deg);
-}
-
-.label3 {
-    transform: translate(-50%, -50%)
-               rotate(72deg)
-               translateY(-135px)
-               rotate(-72deg);
-}
-
-.label4 {
-    transform: translate(-50%, -50%)
-               rotate(108deg)
-               translateY(-135px)
-               rotate(-108deg);
-}
-
-.label5 {
-    transform: translate(-50%, -50%)
-               rotate(144deg)
-               translateY(-135px)
-               rotate(-144deg);
-}
-
-.label6 {
-    transform: translate(-50%, -50%)
-               rotate(180deg)
-               translateY(-135px)
-               rotate(-180deg);
-}
-
-.label7 {
-    transform: translate(-50%, -50%)
-               rotate(216deg)
-               translateY(-135px)
-               rotate(-216deg);
-}
-
-.label8 {
-    transform: translate(-50%, -50%)
-               rotate(252deg)
-               translateY(-135px)
-               rotate(-252deg);
-}
-
-.label9 {
-    transform: translate(-50%, -50%)
-               rotate(288deg)
-               translateY(-135px)
-               rotate(-288deg);
-}
-
-.label10 {
-    transform: translate(-50%, -50%)
-               rotate(324deg)
-               translateY(-135px)
-               rotate(-324deg);
+    filter:
+        drop-shadow(0 3px 5px rgba(0,0,0,0.5));
 }
 
 
 /* =====================================================
-   CENTER 🎉
+   SPIN BUTTON BELOW THE WHEEL
 ===================================================== */
 
-.wheel-center {
-    position: absolute !important;
+#wheelScreen .wheel-container {
+    width: 100% !important;
 
-    top: 50% !important;
-    left: 50% !important;
+    max-width: 600px !important;
 
-    transform: translate(-50%, -50%) !important;
+    display: flex !important;
 
-    width: 65px;
-    height: 65px;
+    flex-direction: column !important;
 
-    border-radius: 50%;
+    align-items: center !important;
 
-    background: white;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    font-size: 27px;
-
-    z-index: 10;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.3);
+    text-align: center !important;
 }
-@media (max-width: 420px) {
 
-.wheel-wrapper {
-    width: 88vw;
-    height: 88vw;
+
+#wheelScreen #spinButton {
+    position: static !important;
+
+    display: block !important;
+
+    width: 160px !important;
+
+    margin: 0 auto !important;
+
+    align-self: center !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+/* RESULT BELOW BUTTON */
+
+#wheelScreen #wheelResult {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin: 20px auto 0 !important;
+
+    text-align: center !important;
+}
+
+
+/* PHONE */
+
+@media (max-width: 600px) {
+
+    #wheelScreen .wheel-wrapper {
+        width: 88vw !important;
+        height: 88vw !important;
+
+        max-width: 360px !important;
+        max-height: 360px !important;
     }
 
-.wheel {
-    width: 88vw;
-    height: 88vw;
+    #wheelScreen .pointer {
+        top: -28px !important;
 
-    min-width: 0;
-    min-height: 0;
+        border-left-width: 17px !important;
+        border-right-width: 17px !important;
+
+        border-top-width: 28px !important;
     }
-}
-.envelope.opened .envelope-flap {
-    transform: rotateX(180deg);
-}
 
-.envelope.opened .letter-paper {
-    transform: translateY(-110px);
 }

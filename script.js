@@ -13,24 +13,21 @@ function showScreen(screenId) {
         document.querySelectorAll(".screen");
 
     screens.forEach(function(screen) {
-
         screen.style.display = "none";
-
     });
-
 
     const screen =
         document.getElementById(screenId);
-
 
     if (screen) {
 
         screen.style.display = "flex";
 
-        window.scrollTo(0, 0);
-
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
-
 }
 
 
@@ -59,7 +56,6 @@ document
             document.getElementById("envelope");
 
         envelope.classList.add("opened");
-
 
         setTimeout(function() {
 
@@ -108,37 +104,38 @@ const memories = [
     {
         image: "images/us1.jpg",
 
-        title: "Look at us oo 😂❤️",
+        title:
+            "Look at us oo 😂❤️",
 
         caption:
             "Chale, look at this picture 😂 How did we even get here?"
     },
 
-
     {
         image: "images/us2.jpg",
 
-        title: "Ei Esther 😂",
+        title:
+            "Ei Esther 😂",
 
         caption:
             "You remember this day? Because I definitely do. ❤️"
     },
 
-
     {
         image: "images/us3.jpg",
 
-        title: "This one is special ❤️",
+        title:
+            "This one is special ❤️",
 
         caption:
             "Some moments are small, but somehow they stay in your heart."
     },
 
-
     {
         image: "images/us4.jpg",
 
-        title: "And here we are 😂❤️",
+        title:
+            "And here we are 😂❤️",
 
         caption:
             "Honestly, I wouldn't trade these memories for anything."
@@ -153,9 +150,6 @@ document
 
         currentMemory++;
 
-
-        /* After memory 4 */
-
         if (
             currentMemory >= memories.length
         ) {
@@ -163,7 +157,6 @@ document
             showScreen("videoScreen");
 
             return;
-
         }
 
 
@@ -172,18 +165,15 @@ document
                 "memoryImage"
             );
 
-
         const title =
             document.getElementById(
                 "memoryTitle"
             );
 
-
         const caption =
             document.getElementById(
                 "memoryCaption"
             );
-
 
         const number =
             document.getElementById(
@@ -192,9 +182,7 @@ document
 
 
         image.style.opacity = "0";
-
         title.style.opacity = "0";
-
         caption.style.opacity = "0";
 
 
@@ -217,12 +205,30 @@ document
 
 
             image.style.opacity = "1";
-
             title.style.opacity = "1";
-
             caption.style.opacity = "1";
 
         }, 500);
+
+    });
+
+
+/* =====================================================
+   VIDEO → WHY YOU
+===================================================== */
+
+document
+    .getElementById("videoContinueButton")
+    .addEventListener("click", function() {
+
+        const video =
+            document.getElementById(
+                "birthdayVideo"
+            );
+
+        video.pause();
+
+        showScreen("loveScreen");
 
     });
 
@@ -258,78 +264,60 @@ document
 ===================================================== */
 
 let spinCount = 0;
-
 let wheelRotation = 0;
+
+let firstPrize = "";
+let secondPrize = "";
 
 
 const prizes = [
-
     "🍫 Toffee!",
-
     "🎂 Birthday Cake!",
-
     "🍬 Sweets!",
-
     "🧃 A Cold Drink!",
-
     "🍕 Food Date!",
-
     "💐 Flowers!",
-
     "🎁 Mystery Gift!",
-
     "👑 Queen for the Day!",
-
     "❤️ Extra Love!",
-
     "💋 A Big Kiss!"
-
 ];
 
 
 /*
-   CHANGE THIS NUMBER IF YOU WANT
-   A DIFFERENT SECOND-SPIN RESULT.
+    SECOND SPIN WILL ALWAYS BE:
+    🍕 Food Date!
 
-   0 = Toffee
-   1 = Cake
-   2 = Sweets
-   3 = Drink
-   4 = Food Date
-   5 = Flowers
-   6 = Mystery Gift
-   7 = Queen
-   8 = Extra Love
-   9 = Kiss
+    0 = Toffee
+    1 = Cake
+    2 = Sweets
+    3 = Drink
+    4 = Food Date
+    5 = Flowers
+    6 = Mystery Gift
+    7 = Queen
+    8 = Extra Love
+    9 = Kiss
 */
 
 const chosenPrize = 4;
 
 
-document
-    .getElementById("spinButton")
-    .addEventListener("click", function() {
+const spinButton =
+    document.getElementById("spinButton");
 
-        const button =
-            document.getElementById(
-                "spinButton"
-            );
+const wheel =
+    document.getElementById("wheel");
 
-
-        const wheel =
-            document.getElementById(
-                "wheel"
-            );
+const wheelResult =
+    document.getElementById("wheelResult");
 
 
-        const result =
-            document.getElementById(
-                "wheelResult"
-            );
+spinButton.addEventListener(
+    "click",
+    function() {
 
-
-        button.disabled = true;
-
+        spinButton.disabled = true;
 
         spinCount++;
 
@@ -346,18 +334,39 @@ document
                     prizes.length
                 );
 
+            firstPrize =
+                prizes[randomPrize];
 
-            const segment =
-                randomPrize * 36;
+
+            const segmentSize =
+                360 / prizes.length;
 
 
-            const extraSpins =
-                5 * 360;
+            /*
+                Put the random section under
+                the pointer.
+            */
+
+            const targetAngle =
+                -(
+                    randomPrize *
+                    segmentSize +
+                    segmentSize / 2
+                );
+
+
+            const currentAngle =
+                wheelRotation % 360;
+
+
+            let adjustment =
+                targetAngle -
+                currentAngle;
 
 
             wheelRotation +=
-                extraSpins +
-                (360 - segment);
+                5 * 360 +
+                adjustment;
 
 
             wheel.style.transform =
@@ -368,40 +377,64 @@ document
 
             setTimeout(function() {
 
-                result.textContent =
-                    "You got: " +
-                    prizes[randomPrize];
+                wheelResult.innerHTML =
+                    "You got:<br><br>" +
+                    "🎁 " +
+                    firstPrize;
 
 
-                button.textContent =
+                spinButton.textContent =
                     "SPIN AGAIN 🎡";
 
 
-                button.disabled = false;
+                spinButton.disabled =
+                    false;
 
             }, 5200);
 
 
             return;
-
         }
 
 
         /* =========================================
-           SECOND SPIN — CHOSEN RESULT
+           SECOND SPIN — FOOD DATE
         ========================================= */
 
-        const segment =
-            chosenPrize * 36;
+        secondPrize =
+            prizes[chosenPrize];
 
 
-        const extraSpins =
-            5 * 360;
+        const segmentSize =
+            360 / prizes.length;
+
+
+        /*
+            Food Date = item 4.
+
+            We target the CENTER of that section.
+        */
+
+        const targetAngle =
+            -(
+                chosenPrize *
+                segmentSize +
+                segmentSize / 2
+            );
+
+
+        const currentAngle =
+            wheelRotation % 360;
+
+
+        let adjustment =
+            targetAngle -
+            currentAngle;
 
 
         wheelRotation +=
-            extraSpins +
-            (360 - segment);
+            5 * 360 +
+            adjustment;
 
 
         wheel.style.transform =
@@ -410,20 +443,59 @@ document
             "deg)";
 
 
+        /* =========================================
+           SHOW SECOND RESULT
+        ========================================= */
+
         setTimeout(function() {
 
-            showScreen(
-                "congratulationsScreen"
-            );
+            wheelResult.innerHTML =
+                "You got:<br><br>" +
+                "🎁 " +
+                secondPrize;
 
 
-            launchConfetti();
+            spinButton.textContent =
+                "CONGRATULATIONS 🎉";
+
+
+            /*
+                Give her time to see the
+                second result.
+            */
+
+            setTimeout(function() {
+
+                const winningText =
+                    document.querySelector(
+                        ".winning-text"
+                    );
+
+
+                if (winningText) {
+
+                    winningText.innerHTML =
+                        "You won:<br><br>" +
+                        "🍕 Food Date!";
+
+                }
+
+
+                showScreen(
+                    "congratulationsScreen"
+                );
+
+
+                launchConfetti();
+
+
+            }, 2500);
 
 
         }, 5200);
 
-    });
-
+    }
+);
 
 /* =====================================================
    CONGRATULATIONS → FINAL MESSAGE
@@ -468,23 +540,18 @@ function launchConfetti() {
         confetti.style.position =
             "fixed";
 
-
         confetti.style.left =
             Math.random() * 100 + "vw";
 
-
         confetti.style.top =
             "-30px";
-
 
         confetti.style.fontSize =
             (12 + Math.random() * 20) +
             "px";
 
-
         confetti.style.zIndex =
             "9999";
-
 
         confetti.style.pointerEvents =
             "none";
@@ -545,15 +612,7 @@ function launchConfetti() {
     }
 
 }
-document
-    .getElementById("videoContinueButton")
-    .addEventListener("click", function() {
-
-        const video =
-            document.getElementById("birthdayVideo");
-
-        video.pause();
-
-        showScreen("loveScreen");
-
-    });
+document.getElementById("exitButton").
+addEventListener("click", function() {
+        showScreen("welcomescreen")
+     });
