@@ -135,7 +135,7 @@ const memories = [
         image: "images/us4.jpg",
 
         title:
-            "And here we are 😂❤️",
+            "The head remains same😂❤️",
 
         caption:
             "Honestly, I wouldn't trade these memories for anything."
